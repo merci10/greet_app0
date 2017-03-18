@@ -10,6 +10,8 @@ class UsersController < ApplicationController
 
   def create
   	@user = User.new(user_params)
+    file = params[:user][:user_image]
+    @user.set_image(file)
   	if @user.save
   		flash[:success] = "Welcome to the Greeting App!"
   		redirect_to @user

@@ -7,4 +7,12 @@ class User < ApplicationRecord
 						uniqueness: { case_sensitive: false }
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }
+
+	def set_image(file)
+	  if !file.nil?
+      file_name = file.original_filename
+      File.open("public/user_images/#{file_name}", 'wb'){ |f| f.write(file.read) } 
+      self.user_image = file_name
+    end
+  end
 end
