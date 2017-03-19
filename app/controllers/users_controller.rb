@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     file = params[:user][:user_image]
     @user.set_image(file)
   	if @user.save
+      log_in @user
   		flash[:success] = "Welcome to the Greeting App!"
   		redirect_to @user
   	else

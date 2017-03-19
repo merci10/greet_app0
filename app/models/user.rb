@@ -15,4 +15,11 @@ class User < ApplicationRecord
       self.user_image = file_name
     end
   end
+
+  #渡された文字のハッシュを返す
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 end
