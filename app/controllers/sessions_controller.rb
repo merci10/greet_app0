@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    
   end
 
   def create
@@ -8,9 +9,9 @@ class SessionsController < ApplicationController
   	#authenticateメソッドはhas_secure_passwordを定義したことによって使えるようになったメソッド
   	#引数にpasswordを入れて、DBのdigestと照合させる
   	if @user && @user.authenticate(params[:session][:password])
+      log_in @user
       params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-  		log_in @user
-  	  redirect_to @user
+  	  redirect_back_or @user
     else
       #エラーメッセージを作成する
       flash.now[:danger] = "Invalid email/password combination"
