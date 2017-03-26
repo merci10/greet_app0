@@ -4,7 +4,7 @@ module UsersHelper
   	if user.user_image
   	  image_tag "/user_images/#{user.user_image}", alt: user.name, width: size, class: "user-image"
   	else
-  	  image_tag "320.png", width: size, class: "user-image"
+  	  image_tag "sheep.png", width: size, class: "user-image"
   	end
   end
 end
