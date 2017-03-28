@@ -5,6 +5,7 @@
 
 $gray-medium-light: #eaeaea;
 $blue: #1E88E5;
+$pink: #F48FB1;
 
 @mixin box_sizing {
 	-moz-box-sizing:    border-box;
@@ -253,6 +254,22 @@ aside {
 		margin-top: 5em;
 		padding-top: 0;
 	}
+	.like {
+		margin-top: 0;
+		padding: 0;
+		a {
+			padding-left: 4px;
+		  border-left: 2px solid #e8e8e8;
+		  color: gray;
+		  &:hover {
+			text-decoration: none;
+			color: $pink;
+		  }
+		}
+		.like-color {
+			color: $pink;
+		}
+	}
 	.content {
 		display: block;
 		margin-left: 60px;
@@ -271,6 +288,10 @@ aside {
 		margin-right: 10px;
 		margin-top: 5px;
 	}
+}
+
+.like-color {
+	color: $pink;
 }
 
 aside {

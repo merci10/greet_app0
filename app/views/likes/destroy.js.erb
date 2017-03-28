@@ -1,0 +1,2 @@
+$("#note-<%= @note.id %>").find('.like').html("<%= escape_javascript(render('likes/like_unlike', note: @note)) %>");
+$('#likes').html('<%= current_user.likes.count %>');

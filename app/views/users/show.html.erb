@@ -1,4 +1,4 @@
-<% provide(:title, @user.name) %>
+<% provide(:title, @title) %>
 <div class="row">
 	<aside class="col-md-4">
 		<section class="user_info">
@@ -13,8 +13,8 @@
 	</aside>
 	<div class="col-md-8">
 	  <%= render 'follow_form' if logged_in? %>
-	  <% if @user.notes.any? %>
-		  <h3>Notes (<%= @user.notes.count %>)</h3>
+	  <% if @notes.any? %>
+		  <h3>Notes (<%= @title %>)</h3>
 		  <ol class="notes">
 		  	<%= render @notes %>
 		  </ol>

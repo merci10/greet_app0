@@ -8,6 +8,8 @@ class User < ApplicationRecord
                       dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :likes
+  has_many :like_notes, through: :likes, source: :note
 	attr_accessor :remember_token, :activation_token, :reset_token
 	before_save :downcase_email
   before_create :create_activation_digest
@@ -85,6 +87,11 @@ class User < ApplicationRecord
 
   # ユーザーのステータスフィードを返す
   def feed
+    # Note.where("user_id IN (?) OR user_id = ?", following_ids, id)
+
+    # Note.where("user_id IN (:following_ids) OR user_id = :user_id",
+    #            following_ids: following_ids, user_id: id)
+
     following_ids = "SELECT followed_id FROM relationships
                      WHERE follower_id = :user_id"
     Note.where("user_id IN (#{following_ids})
@@ -106,6 +113,19 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  # likeをする
+  def like(note)
+    likes.create(note_id: note.id)
+  end
+
+  # likeを取り消す
+  def unlike(note)
+    likes.find_by(note_id: note.id).destroy
+  end
+
+  #ユーザーがlikeしている全noteを返す
+
 
 
   private

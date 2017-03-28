@@ -12,4 +12,16 @@
 	  </strong>
 	  followers
   </a>
+  <a href="<%= like_notes_user_path(@user) %>">
+    <% if current_user?(@user) %>
+	    <strong id="likes" class="stat">
+	    	<%= current_user.likes.count %>
+	    </strong>
+	  <% else %>
+	    <strong class="stat">
+	    	<%= @user.likes.count %>
+	    </strong>
+	  <% end %>
+    likes
+  </a>
 </div>

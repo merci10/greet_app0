@@ -1,6 +1,11 @@
 <li id="note-<%= note.id %>">
 	<%= link_to image_for(note.user, size: 50), note.user %>
 	<span class="user"><%= link_to note.user.name, note.user %></span>
+	<% unless current_user?(note.user) %>
+		<span class="like">
+		  <%= render 'likes/like_unlike', note: note %>
+		</span>
+	<% end %>
 	<span class="content">
 	  <%= note.content %>
 	  <%= image_tag note.picture.url if note.picture? %>

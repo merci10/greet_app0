@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  post '/like/:note_id', to: 'likes#create', as: 'like'
+  delete '/unlike/:note_id', to: 'likes#destroy', as: 'unlike'
   resources :users do
     member do
       get :following, :followers
+      get :like_notes
     end
   end
   resources :account_activations, only: [:edit]
