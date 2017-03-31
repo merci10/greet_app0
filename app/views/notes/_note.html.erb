@@ -15,5 +15,18 @@
 		<% if current_user?(note.user) %>
 		  <%= link_to "delete", note, method: :delete, data: { confirm: "You sure?" } %>
 	  <% end %>
+	  <div class="reply">reply</div>
 	</spna>
+	<span class="comment">
+    <% if note.comments.any? %>
+      <ol class="comments">
+        <% note.comments.each do |comment| %>
+          <%= render 'comments/comment', comment: comment %>
+        <% end %>
+      </ol>
+    <% end %>
+    <div class="comment_form hidden">
+      <%= render 'comments/comment_form', note: note if logged_in? %>
+    </div>
+  </span>
 </li>

@@ -12,7 +12,7 @@
       </section>
     </aside>
     <div class="col-md-8">
-      <h3>Note Feed</h3>
+      <h3>Notes Feed</h3>
       <%= render 'shared/feed' %>
     </div>
   </div>
@@ -26,7 +26,15 @@
 		</h2>
 		<%= link_to "Sign up now!", new_user_path, class: "btn btn-lg btn-primary" %>
 	</div>
-
-	<%= link_to image_tag("rails.png", alt: "Rails logo"),
-	             'http://rubyonrails.org/' %>
 <% end %>
+
+<script type="text/javascript">
+  $('.reply').click(function() {
+    var $comment_form = $(this).parents('li').find('.comment_form')
+    if ($comment_form.hasClass('hidden')) {
+      $comment_form.removeClass('hidden');
+    } else {
+      $comment_form.addClass('hidden');
+    }
+  });
+</script>

@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :likes
   has_many :like_notes, through: :likes, source: :note
+  has_many :comments
 	attr_accessor :remember_token, :activation_token, :reset_token
 	before_save :downcase_email
   before_create :create_activation_digest

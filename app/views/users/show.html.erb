@@ -13,7 +13,7 @@
 	</aside>
 	<div class="col-md-8">
 	  <%= render 'follow_form' if logged_in? %>
-	  <% if @notes.any? %>
+	  <% if @user.notes.any? %>
 		  <h3>Notes (<%= @title %>)</h3>
 		  <ol class="notes">
 		  	<%= render @notes %>
@@ -21,4 +21,15 @@
 		  <%= will_paginate @notes %>
 	  <% end %>
 	</div>
-</div>  
+</div>
+
+<script type="text/javascript">
+  $('.reply').click(function() {
+    var $comment_form = $(this).parents('li').find('.comment_form')
+    if ($comment_form.hasClass('hidden')) {
+      $comment_form.removeClass('hidden');
+    } else {
+      $comment_form.addClass('hidden');
+    }
+  });
+</script>
