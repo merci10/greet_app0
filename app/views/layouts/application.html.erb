@@ -9,7 +9,11 @@
   </head>
 
   <body>
-  <%= render 'layouts/header' %>
+  <% if controller.action_name == "home" %>  
+    <%= render 'layouts/header_home' %>
+  <% else %>
+    <%= render 'layouts/header' %>
+  <% end %>
   <div class="container">
     <% flash.each do |message_type, message| %>
       <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>

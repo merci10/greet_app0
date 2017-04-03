@@ -16,7 +16,9 @@ $pink: #F48FB1;
 /* universal */
 
 body {
-	padding-top: 60px;
+	padding-top: 50px;
+	background-color: #FAFAFA;
+	font-family: Georgia, 'Hiragino Mincho ProN', 'Yu Mincho', serif;
 }
 
 section {
@@ -67,22 +69,52 @@ p {
 
 /* header */
 
+.jumbotron {
+	background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, .05) ), url(night-sky-523892_1920.jpg);
+	background-size: cover;
+	background-position: 50% 50%;
+	padding-top: 150px;
+	padding-bottom: 150px;
+	color: white;
+	h1 {
+		font-size: 70px;
+		font-family: Georgia, 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+	}
+	h2 {
+		font-size: 25px;
+		color: white;
+		margin-bottom: 120px;
+	}
+}
+
+.navbar {
+	background-color: white;
+	border: 1px solid #CFD8DC;
+	.nav li a:hover {
+		color: black;
+	}
+}
+
 #logo {
 	float: left;
 	margin-right: 10px;
-    font-size: 1.7em;
-	color: #fff;
+  font-size: 1.7em;
+	color: #A5D6A7;
 	text-transform: uppercase;
 	letter-spacing: -1px;
 	padding-top: 9px;
 	font-weight: bold;
 	&:hover {
-		color: white;
+		color: #81C784;
 		text-decoration: none;
 	}
 }
 
 /* footer */
+
+.new_note {
+	padding-top: 20px;
+}
 
 footer {
 	margin-top: 45px;
@@ -123,7 +155,7 @@ footer {
 input, textarea, select, .uneditable-input {
 	border: 1px solid #bbb;
 	width: 100%;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 	@include box_sizing;
 }
 
@@ -254,6 +286,10 @@ aside {
 	li {
 		padding: 10px 0;
 		border-top: 1px solid #e8e8e8;
+		a {
+			font-weight: bold;
+			color: black;
+		}
 	}
 	.user {
 		margin-top: 5em;
@@ -266,6 +302,7 @@ aside {
 			padding-left: 4px;
 		  border-left: 2px solid #e8e8e8;
 		  color: gray;
+		  font-weight: normal;
 		  &:hover {
 			text-decoration: none;
 			color: $pink;
